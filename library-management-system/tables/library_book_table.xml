@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Update Set export representing the "Library Book" table.
+  Table name: u_library_book
+  Extends: sys_metadata (standard custom table)
+
+  Import via: System Update Sets > Retrieved Update Sets > Import Update Set from XML
+  Alternatively, recreate manually via System Definition > Tables > New,
+  using the field list documented below.
+-->
+<unload unload_date="2026-07-05">
+
+  <!-- ===================== TABLE DEFINITION ===================== -->
+  <sys_db_object action="INSERT_OR_UPDATE">
+    <name>u_library_book</name>
+    <label>Library Book</label>
+    <is_extendable>false</is_extendable>
+    <sys_class_name>sys_db_object</sys_class_name>
+    <access>public</access>
+    <create_access>true</create_access>
+    <read_access>true</read_access>
+    <update_access>true</update_access>
+    <delete_access>true</delete_access>
+  </sys_db_object>
+
+  <!-- ===================== FIELD: Book ID (auto number-ish text) ===================== -->
+  <sys_dictionary action="INSERT_OR_UPDATE">
+    <name>u_library_book</name>
+    <element>u_book_id</element>
+    <column_label>Book ID</column_label>
+    <internal_type>string</internal_type>
+    <max_length>40</max_length>
+    <mandatory>true</mandatory>
+    <unique>true</unique>
+  </sys_dictionary>
+
+  <!-- ===================== FIELD: Title ===================== -->
+  <sys_dictionary action="INSERT_OR_UPDATE">
+    <name>u_library_book</name>
+    <element>u_title</element>
+    <column_label>Title</column_label>
+    <internal_type>string</internal_type>
+    <max_length>200</max_length>
+    <mandatory>true</mandatory>
+  </sys_dictionary>
+
+  <!-- ===================== FIELD: Author ===================== -->
+  <sys_dictionary action="INSERT_OR_UPDATE">
+    <name>u_library_book</name>
+    <element>u_author</element>
+    <column_label>Author</column_label>
+    <internal_type>string</internal_type>
+    <max_length>150</max_length>
+    <mandatory>true</mandatory>
+  </sys_dictionary>
+
+  <!-- ===================== FIELD: Category (choice) ===================== -->
+  <sys_dictionary action="INSERT_OR_UPDATE">
+    <name>u_library_book</name>
+    <element>u_category</element>
+    <column_label>Category</column_label>
+    <internal_type>string</internal_type>
+    <max_length>40</max_length>
+    <choice>1</choice>
+  </sys_dictionary>
+  <sys_choice action="INSERT_OR_UPDATE"><name>u_library_book</name><element>u_category</element><label>Fiction</label><value>fiction</value></sys_choice>
+  <sys_choice action="INSERT_OR_UPDATE"><name>u_library_book</name><element>u_category</element><label>Non-Fiction</label><value>non_fiction</value></sys_choice>
+  <sys_choice action="INSERT_OR_UPDATE"><name>u_library_book</name><element>u_category</element><label>Science &amp; Technology</label><value>sci_tech</value></sys_choice>
+  <sys_choice action="INSERT_OR_UPDATE"><name>u_library_book</name><element>u_category</element><label>Reference</label><value>reference</value></sys_choice>
+
+  <!-- ===================== FIELD: Total Copies ===================== -->
+  <sys_dictionary action="INSERT_OR_UPDATE">
+    <name>u_library_book</name>
+    <element>u_total_copies</element>
+    <column_label>Total Copies</column_label>
+    <internal_type>integer</internal_type>
+    <default_value>1</default_value>
+    <mandatory>true</mandatory>
+  </sys_dictionary>
+
+  <!-- ===================== FIELD: Available Copies ===================== -->
+  <sys_dictionary action="INSERT_OR_UPDATE">
+    <name>u_library_book</name>
+    <element>u_available_copies</element>
+    <column_label>Available Copies</column_label>
+    <internal_type>integer</internal_type>
+    <default_value>1</default_value>
+    <mandatory>true</mandatory>
+  </sys_dictionary>
+
+  <!-- ===================== FIELD: Availability Status (choice, read-only, calculated) ===================== -->
+  <sys_dictionary action="INSERT_OR_UPDATE">
+    <name>u_library_book</name>
+    <element>u_availability_status</element>
+    <column_label>Availability Status</column_label>
+    <internal_type>string</internal_type>
+    <max_length>20</max_length>
+    <choice>1</choice>
+    <read_only>true</read_only>
+    <default_value>available</default_value>
+  </sys_dictionary>
+  <sys_choice action="INSERT_OR_UPDATE"><name>u_library_book</name><element>u_availability_status</element><label>Available</label><value>available</value></sys_choice>
+  <sys_choice action="INSERT_OR_UPDATE"><name>u_library_book</name><element>u_availability_status</element><label>Unavailable</label><value>unavailable</value></sys_choice>
+
+</unload>
